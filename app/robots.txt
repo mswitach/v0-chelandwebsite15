@@ -1,0 +1,15 @@
+# https://cheland.io/robots.txt
+User-agent: *
+Allow: /
+
+Crawl-delay: 1
+
+Disallow: /services-2/
+Disallow: /services/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://cheland.io/sitemap.xml
