@@ -12,16 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/automatizacion-ia`,
+      url: `${baseUrl}/servicios`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/wms`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/wms/caracteristicas`,
@@ -30,22 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/precios`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/casos-exito`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/recursos`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/blog`,
@@ -57,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/contacto`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.5,
     },
   ]
 }

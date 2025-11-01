@@ -4,10 +4,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
-import { ChevronDown, ArrowRight, Bot, Package, CheckCircle2, Sparkles, Workflow, Rocket } from "lucide-react"
+import { ChevronDown, ArrowRight, Bot, Package, CheckCircle2 } from "lucide-react"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { AnimatedIcon } from "@/components/ui/animated-icon"
 import { AnimatedCard } from "@/components/ui/animated-card"
+import { WMSAnimation } from "@/components/wms-animation"
 
 import SchemaOrg from "@/components/schema-org"
 import { TestimonialsSchema } from "@/components/testimonials-schema"
@@ -16,23 +17,23 @@ import type { TestimonialType } from "@/types/testimonial"
 const businessLines = [
   {
     icon: Bot,
-    title: "Automatización con IA",
+    title: "Automatización Inteligente",
     description:
-      "Transformamos procesos manuales en flujos inteligentes. Desde chatbots hasta automatización de workflows, liberamos tiempo para que tu equipo se enfoque en lo estratégico.",
+      "Servicios de consultoría especializados en automatización de procesos empresariales utilizando IA, optimización de workflows y desarrollo de soluciones a medida.",
     features: [
       "Consultoría en IA aplicada",
-      "Automatización de workflows",
-      "Desarrollo personalizado",
       "Optimización de procesos",
+      "Desarrollo personalizado",
+      "Automatización de workflows",
     ],
-    link: "/automatizacion-ia",
-    linkText: "Ver servicios de IA",
+    link: "/servicios",
+    linkText: "Ver servicios",
   },
   {
     icon: Package,
     title: "WMS - Sistema de Gestión",
     description:
-      "Plataforma SaaS para gestionar pedidos, inventario y operaciones logísticas. Flujos configurables, trazabilidad completa y visibilidad en tiempo real.",
+      "Aplicación web SaaS para gestión integral de pedidos y operaciones logísticas, con flujos de trabajo configurables y trazabilidad completa.",
     features: ["Gestión de pedidos", "Flujos personalizables", "Información en tiempo real", "Escalable y flexible"],
     link: "/wms",
     linkText: "Conocer WMS",
@@ -70,24 +71,6 @@ const stats = [
   { value: "3x", label: "ROI promedio" },
 ]
 
-const howWeWork = [
-  {
-    icon: Sparkles,
-    title: "1. Entendemos tu negocio",
-    description: "Analizamos tus procesos actuales y detectamos oportunidades de mejora.",
-  },
-  {
-    icon: Workflow,
-    title: "2. Diseñamos la solución",
-    description: "Creamos un plan personalizado que se adapta a tus necesidades específicas.",
-  },
-  {
-    icon: Rocket,
-    title: "3. Implementamos y acompañamos",
-    description: "Ejecutamos la solución y te acompañamos en cada paso del proceso.",
-  },
-]
-
 export default function ClientPage() {
   return (
     <>
@@ -102,7 +85,9 @@ export default function ClientPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
           </div>
 
+          {/* Hero Section - Full Width Image with Text Overlay */}
           <div className="relative h-[90vh] min-h-[600px] w-full">
+            {/* Hero Background Image */}
             <div className="absolute inset-0 z-0">
               <Image
                 src="https://raw.githubusercontent.com/mswitach/assets/main/iStock-1483223036.jpg"
@@ -112,51 +97,45 @@ export default function ClientPage() {
                 className="object-cover"
                 sizes="100vw"
               />
+              {/* Dark Overlay for better text readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 z-10"></div>
             </div>
 
+            {/* Hero Content */}
             <div className="relative z-20 flex flex-col justify-center items-center h-full w-full px-4 text-center">
               <div className="max-w-4xl mx-auto">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-6 text-white"
+                  className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-12 text-white"
                 >
-                  Automatización con IA y WMS para empresas que quieren crecer
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent"
+                  >
+                    Cheland: Automatización Inteligente
+                  </motion.span>{" "}
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    y Sistema WMS
+                  </motion.span>
                 </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.6 }}
                   className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto"
                 >
-                  Optimizamos procesos con inteligencia artificial y gestionamos tu logística con nuestro WMS. Dos
-                  soluciones, un objetivo: que tu empresa opere mejor.
+                  Transformamos empresas con dos líneas de negocio: servicios de automatización inteligente con IA y
+                  nuestro sistema WMS para gestión logística. Soluciones tecnológicas integrales en Argentina.
                 </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center"
-                >
-                  <AnimatedButton
-                    size="lg"
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
-                    iconRight={<ArrowRight className="h-4 w-4" />}
-                  >
-                    <Link href="/contacto">Agendar consulta gratuita</Link>
-                  </AnimatedButton>
-                  <AnimatedButton
-                    size="lg"
-                    variant="outline"
-                    className="bg-white text-purple-600 border-white hover:bg-purple-600 hover:text-white hover:border-purple-600"
-                  >
-                    <Link href="/casos-exito">Ver casos de éxito</Link>
-                  </AnimatedButton>
-                </motion.div>
               </div>
 
               <motion.div
@@ -176,66 +155,8 @@ export default function ClientPage() {
             </div>
           </div>
 
-          <div className="py-16 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4"
-                >
-                  ¿Qué necesita tu empresa?
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-xl text-gray-600 max-w-3xl mx-auto"
-                >
-                  Elegí la solución que mejor se adapte a tus desafíos
-                </motion.p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <AnimatedCard
-                  hoverEffect="lift"
-                  className="p-8 bg-gradient-to-br from-purple-50 to-white rounded-lg border border-purple-100"
-                >
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Querés automatizar procesos?</h3>
-                  <p className="text-gray-600 mb-6">
-                    Si perdés tiempo en tareas repetitivas, necesitás optimizar workflows o querés implementar IA en tu
-                    operación.
-                  </p>
-                  <AnimatedButton
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 w-full"
-                    iconRight={<ArrowRight className="h-4 w-4" />}
-                  >
-                    <Link href="/automatizacion-ia">Ver Automatización con IA</Link>
-                  </AnimatedButton>
-                </AnimatedCard>
-
-                <AnimatedCard
-                  hoverEffect="lift"
-                  className="p-8 bg-gradient-to-br from-blue-50 to-white rounded-lg border border-blue-100"
-                >
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">¿Necesitás gestionar tu logística?</h3>
-                  <p className="text-gray-600 mb-6">
-                    Si manejás inventario, pedidos o almacenes y querés tener control total con trazabilidad en tiempo
-                    real.
-                  </p>
-                  <AnimatedButton
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 w-full"
-                    iconRight={<ArrowRight className="h-4 w-4" />}
-                  >
-                    <Link href="/wms">Conocer WMS</Link>
-                  </AnimatedButton>
-                </AnimatedCard>
-              </div>
-            </div>
-          </div>
-
           {/* Business Lines Section */}
-          <div className="py-24 bg-gray-50">
+          <div className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <motion.span
@@ -243,14 +164,14 @@ export default function ClientPage() {
                   animate={{ opacity: 1 }}
                   className="inline-block px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full mb-4"
                 >
-                  NUESTRAS SOLUCIONES
+                  NUESTRAS LÍNEAS DE NEGOCIO
                 </motion.span>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4"
                 >
-                  Dos líneas de negocio, un mismo compromiso
+                  Dos verticales para transformar tu empresa
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -258,7 +179,7 @@ export default function ClientPage() {
                   transition={{ delay: 0.2 }}
                   className="text-xl text-gray-600 max-w-3xl mx-auto"
                 >
-                  Combinamos servicios de automatización inteligente con nuestro sistema WMS
+                  Combinamos servicios de consultoría en automatización inteligente con nuestro sistema WMS
                 </motion.p>
               </div>
 
@@ -306,49 +227,66 @@ export default function ClientPage() {
             </div>
           </div>
 
-          <div className="py-24 bg-white">
+          {/* WMS Feature Section */}
+          <div className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="inline-block px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full mb-4"
-                >
-                  NUESTRA METODOLOGÍA
-                </motion.span>
-                <motion.h2
+              <div className="flex flex-col lg:flex-row items-center gap-12">
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4"
+                  className="flex-1 order-1 lg:order-1"
                 >
-                  Cómo trabajamos
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-xl text-gray-600 max-w-3xl mx-auto"
-                >
-                  Un proceso simple y efectivo para transformar tu operación
-                </motion.p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {howWeWork.map((step, index) => (
-                  <motion.div
-                    key={step.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    className="text-center"
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="inline-block px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full mb-4"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <step.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </motion.div>
-                ))}
+                    PRODUCTO DESTACADO
+                  </motion.span>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">WMS: Sistema de Gestión de Pedidos</h2>
+                  <p className="text-lg text-gray-600 mb-8">
+                    Nuestro WMS es una aplicación web SaaS que permite a las empresas gestionar sus pedidos de forma
+                    ágil, configurando flujos de trabajo que involucran a diferentes sectores y perfiles.
+                  </p>
+
+                  <ul className="space-y-4 mb-8">
+                    {[
+                      "Gestión integral de pedidos",
+                      "Flujos de trabajo personalizables",
+                      "Información en tiempo real",
+                      "Trazabilidad completa",
+                      "Escalable para empresas de cualquier tamaño",
+                    ].map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * index }}
+                        className="flex items-start"
+                      >
+                        <CheckCircle2 className="h-6 w-6 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <AnimatedButton
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-300"
+                    iconRight={<ArrowRight className="h-4 w-4" />}
+                  >
+                    <Link href="/wms" scroll={true}>
+                      Descubrir WMS
+                    </Link>
+                  </AnimatedButton>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex-1 order-2 lg:order-2"
+                >
+                  <WMSAnimation />
+                </motion.div>
               </div>
             </div>
           </div>
@@ -456,7 +394,8 @@ export default function ClientPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
               >
-                Agenda una consulta gratuita y descubre cómo podemos ayudarte a crecer.
+                Agenda una consulta gratuita y descubre cómo nuestros servicios de automatización inteligente y sistema
+                WMS pueden potenciar tu crecimiento.
               </motion.p>
 
               <motion.div

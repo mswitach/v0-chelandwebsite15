@@ -20,40 +20,27 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'raw.githubusercontent.com',
-      },
-    ],
+    unoptimized: true,
+  },
+  experimental: {
+    webpackBuildWorker: true,
+    parallelServerBuildTraces: true,
+    parallelServerCompiles: true,
   },
   async redirects() {
     return [
-      {
-        source: '/services-2/:path*',
-        destination: '/automatizacion-ia',
-        permanent: true,
-      },
-      {
-        source: '/services/:path*',
-        destination: '/automatizacion-ia',
-        permanent: true,
-      },
-      {
-        source: '/servicios/:path*',
-        destination: '/automatizacion-ia',
-        permanent: true,
-      },
+      // Redirect old prototype URLs
       {
         source: '/prototipos/:path*',
-        destination: '/automatizacion-ia',
+        destination: '/servicios',
         permanent: true,
       },
       {
         source: '/prototipo/:path*',
-        destination: '/automatizacion-ia',
+        destination: '/servicios',
         permanent: true,
       },
+      // Redirect common variations
       {
         source: '/home',
         destination: '/',
@@ -71,7 +58,7 @@ const nextConfig = {
       },
       {
         source: '/about',
-        destination: '/automatizacion-ia',
+        destination: '/servicios',
         permanent: true,
       },
     ]
@@ -104,6 +91,7 @@ const nextConfig = {
 }
 
 if (userConfig) {
+  // ESM imports will have a "default" property
   const config = userConfig.default || userConfig
 
   for (const key in config) {

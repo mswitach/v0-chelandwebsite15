@@ -50,21 +50,6 @@ const benefits = [
   { metric: "24/7", description: "Monitoreo continuo" },
 ]
 
-const useCases = [
-  {
-    title: "E-commerce y retail",
-    description: "Gestión de pedidos online, picking, packing y despacho con trazabilidad completa.",
-  },
-  {
-    title: "Distribución y logística",
-    description: "Control de inventario multi-almacén, rutas de distribución y gestión de transportistas.",
-  },
-  {
-    title: "Manufactura",
-    description: "Gestión de materias primas, productos en proceso y productos terminados.",
-  },
-]
-
 export default function WMSClientPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
@@ -72,15 +57,16 @@ export default function WMSClientPage() {
 
       <main className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                WMS: Gestioná tu logística en tiempo real
+                Sistema WMS Personalizado
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Plataforma SaaS para gestionar pedidos, inventario y operaciones de almacén. Flujos configurables,
-                trazabilidad completa y visibilidad en tiempo real para empresas que necesitan control total de su
-                logística.
+                Revoluciona la gestión de tu almacén con nuestros sistemas WMS personalizados. Inteligencia artificial
+                aplicada a la gestión de almacenes para empresas argentinas que buscan optimizar sus procesos logísticos
+                y mejorar la eficiencia operativa.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
@@ -129,35 +115,6 @@ export default function WMSClientPage() {
             ))}
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mb-20"
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                ¿Para quién es nuestro WMS?
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Soluciones adaptadas a diferentes industrias y necesidades
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {useCases.map((useCase, index) => (
-                <Card key={index} className="bg-white/80 backdrop-blur-sm border-blue-100">
-                  <CardHeader>
-                    <CardTitle className="text-xl mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      {useCase.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600">{useCase.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Features Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -170,7 +127,7 @@ export default function WMSClientPage() {
                 Características Principales
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Todas las herramientas que necesitás para optimizar tu operación logística, con{" "}
+                Nuestro WMS incluye todas las herramientas necesarias para optimizar tu operación logística, con{" "}
                 <Link href="/casos-exito" className="text-blue-600 hover:text-blue-700 underline">
                   implementaciones exitosas
                 </Link>{" "}
@@ -239,25 +196,17 @@ export default function WMSClientPage() {
             transition={{ delay: 1.0 }}
             className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Listo para optimizar tu logística?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Listo para optimizar tu almacén?</h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Descubre cómo nuestro sistema WMS puede transformar tu operación y aumentar tu rentabilidad.
+              Descubre cómo nuestro sistema WMS puede transformar tu operación logística y aumentar tu rentabilidad.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                Contactar Especialista
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/precios"
-                className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
-              >
-                Ver Precios
-              </Link>
-            </div>
+            <Link
+              href="/contacto"
+              className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              Contactar Especialista
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </motion.div>
         </div>
       </main>

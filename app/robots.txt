@@ -4,8 +4,7 @@ Allow: /
 
 Crawl-delay: 1
 
-Disallow: /services-2/
-Disallow: /services/
+# Block admin and private paths
 Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/

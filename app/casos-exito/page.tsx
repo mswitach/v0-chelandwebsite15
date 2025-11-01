@@ -1,21 +1,22 @@
 import type { Metadata } from "next"
 import CasosExitoPageClient from "./CasosExitoPageClient"
-import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Casos de Éxito - WMS y Automatización IA | Cheland",
+  title: "Casos de Éxito - Transformación Digital con Cheland",
   description:
-    "Transformaciones reales en operaciones de pymes LATAM con Cheland WMS y automatización IA. Resultados medibles: -85% errores, +40% velocidad.",
+    "Casos reales de empresas que optimizaron su operación con soluciones de WMS, IA y automatización de Cheland. Resultados comprobables y exitosos.",
   keywords: [
     "casos éxito WMS Argentina",
+    "transformación digital empresas",
     "resultados automatización IA",
     "implementación WMS exitosa",
-    "transformación digital logística",
-    "casos reales Cheland",
+    "consultoría tecnológica casos reales",
+    "optimización procesos empresariales",
   ],
   openGraph: {
-    title: "Casos de Éxito - WMS y Automatización IA | Cheland",
-    description: "Transformaciones reales con resultados medibles. Implementaciones en 3-6 semanas.",
+    title: "Casos de Éxito - Transformación Digital con Cheland",
+    description:
+      "Casos reales de empresas que transformaron su operación con WMS, IA y automatización. Resultados comprobables.",
     url: "https://cheland.io/casos-exito",
     type: "website",
     images: [
@@ -23,14 +24,14 @@ export const metadata: Metadata = {
         url: "https://cheland.io/og-casos-exito.jpg",
         width: 1200,
         height: 630,
-        alt: "Casos de Éxito Cheland",
+        alt: "Casos de Éxito Cheland - Transformación Digital Empresarial",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Casos de Éxito - WMS y Automatización IA | Cheland",
-    description: "Transformaciones reales con resultados medibles.",
+    title: "Casos de Éxito - Transformación Digital con Cheland",
+    description: "Casos reales de transformación digital con WMS, IA y automatización empresarial.",
     images: ["https://cheland.io/og-casos-exito.jpg"],
   },
   alternates: {
@@ -39,27 +40,5 @@ export const metadata: Metadata = {
 }
 
 export default function CasosExitoPage() {
-  return (
-    <>
-      <Script
-        id="schema-casos"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "Casos de Éxito Cheland",
-            description: "Transformaciones reales en operaciones de pymes LATAM con Cheland WMS y automatización IA",
-            url: "https://cheland.io/casos-exito",
-            publisher: {
-              "@type": "Organization",
-              name: "Cheland",
-              url: "https://cheland.io",
-            },
-          }),
-        }}
-      />
-      <CasosExitoPageClient />
-    </>
-  )
+  return <CasosExitoPageClient />
 }

@@ -1,22 +1,21 @@
 import type { Metadata } from "next"
 import ContactoPageClient from "./ContactoPageClient"
-import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Contacto - Demo WMS y Diagnóstico IA | Cheland",
+  title: "Contacto - Consultoría en IA y Software | Cheland",
   description:
-    "Coordiná una demo de Cheland WMS o un diagnóstico de automatización con IA. Respuesta en menos de 24 horas. Atendemos toda LATAM.",
+    "Contactá a Cheland para consultoría en IA, sistemas WMS personalizados y automatización de procesos. Especialistas en transformación digital.",
   keywords: [
-    "contacto Cheland",
-    "demo WMS Argentina",
-    "consultoría automatización IA",
-    "diagnóstico IA logística",
-    "contactar Cheland LATAM",
+    "contacto consultoría IA",
+    "contactar Cheland Argentina",
+    "consultoría tecnológica Buenos Aires",
+    "demo sistema WMS",
+    "automatización procesos empresariales",
   ],
   openGraph: {
-    title: "Contacto - Demo WMS y Diagnóstico IA | Cheland",
+    title: "Contacto - Consultoría en IA y Software | Cheland",
     description:
-      "Coordiná una demo de Cheland WMS o un diagnóstico de automatización con IA. Solo 2 pasos y te contactamos en menos de 24 horas.",
+      "Contactá a Cheland para consultoría en inteligencia artificial, sistemas WMS y automatización de procesos. Respuesta garantizada en 24hs.",
     url: "https://cheland.io/contacto",
     type: "website",
     images: [
@@ -24,14 +23,14 @@ export const metadata: Metadata = {
         url: "https://cheland.io/og-contacto.jpg",
         width: 1200,
         height: 630,
-        alt: "Contacto Cheland - WMS y Automatización IA",
+        alt: "Contacto Cheland - Consultoría en IA y Software",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contacto - Demo WMS y Diagnóstico IA | Cheland",
-    description: "Coordiná una demo o diagnóstico. Respuesta en 24hs.",
+    title: "Contacto - Consultoría en IA y Software | Cheland",
+    description: "Especialistas en IA, automatización y sistemas WMS. Contactanos para transformar tu negocio.",
     images: ["https://cheland.io/og-contacto.jpg"],
   },
   alternates: {
@@ -40,34 +39,5 @@ export const metadata: Metadata = {
 }
 
 export default function ContactoPage() {
-  return (
-    <>
-      <Script
-        id="schema-contacto"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            name: "Contacto Cheland",
-            description: "Coordiná una demo de Cheland WMS o un diagnóstico de automatización con IA",
-            url: "https://cheland.io/contacto",
-            mainEntity: {
-              "@type": "Organization",
-              name: "Cheland",
-              url: "https://cheland.io",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+54-11-2176-6464",
-                contactType: "sales",
-                areaServed: "LATAM",
-                availableLanguage: ["Spanish"],
-              },
-            },
-          }),
-        }}
-      />
-      <ContactoPageClient />
-    </>
-  )
+  return <ContactoPageClient />
 }

@@ -1,19 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { AnalyticsWrapper } from "@/components/analytics-provider"
-import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
+import { Suspense } from "react"
+import { Nav } from "@/components/nav"
+import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Cheland - Consultoría en IA, Optimización de Procesos y WMS | Innovación y Estrategia",
   description:
-    "Especialistas en consultoría de IA, desarrollo de software a medida, automatización inteligente y sistemas WMS para optimizar procesos empresariales. Soluciones tecnológicas que transforman tu negocio.",
+    "Especialistas en consultoría de IA, desarrollo de software a medida, automatización inteligente y sistemas WMS para optimizar procesos empresariales.",
   openGraph: {
     title: "Cheland - Consultoría en IA y Optimización de Procesos Empresariales",
     description:
@@ -69,15 +64,37 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWPGTH71E2"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-PWPGTH71E2', {
+                send_page_view: false,
+                cookie_domain: 'cheland.io',
+                cookie_flags: 'SameSite=None;Secure'
+              });
+            `,
+          }}
+        />
       </head>
-      <body className="font-sans antialiased">
-        {children}
-        <AnalyticsWrapper />
+      <body>
+        <Nav />
+        <Suspense fallback={null}>
+          {children}
+          <AnalyticsWrapper />
+        </Suspense>
+        <Footer />
       </body>
     </html>
   )
 }
+
+import "./globals.css"

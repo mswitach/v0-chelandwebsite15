@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 import { Toaster } from "@/components/ui/toaster"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { sendEmail } from "../actions/send-email"
 
 export default function ContactoPageClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -24,11 +25,13 @@ export default function ContactoPageClient() {
   const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
+    // Obtener el parámetro de consulta 'asunto' de la URL
     const asuntoParam = searchParams.get("asunto")
     if (asuntoParam) {
       setAsunto(asuntoParam)
     }
 
+    // Forzar el scroll al inicio de la página cuando se carga el componente
     if (!hasScrolledRef.current) {
       window.scrollTo(0, 0)
       hasScrolledRef.current = true
@@ -40,50 +43,35 @@ export default function ContactoPageClient() {
     setIsSubmitting(true)
 
     try {
+      // Recopilar los datos del formulario
       const formData = new FormData(e.currentTarget)
       const nombre = formData.get("nombre") as string
       const email = formData.get("email") as string
       const mensaje = formData.get("mensaje") as string
 
-      console.log("[v0] Enviando formulario de contacto...")
+      console.log("📤 Enviando formulario:", { nombre, email, asunto, mensaje })
 
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre,
-          email,
-          asunto,
-          mensaje,
-        }),
+      // Enviar el correo usando el Server Action
+      const result = await sendEmail({
+        nombre,
+        email,
+        asunto,
+        mensaje,
       })
 
-      console.log("[v0] Respuesta recibida, status:", response.status)
-
-      let result
-      const contentType = response.headers.get("content-type")
-
-      if (contentType && contentType.includes("application/json")) {
-        result = await response.json()
-      } else {
-        // Si no es JSON, leer como texto para debugging
-        const text = await response.text()
-        console.error("[v0] Respuesta no-JSON recibida:", text)
-        throw new Error("Error del servidor. Por favor intenta nuevamente.")
-      }
-
-      console.log("[v0] Datos de respuesta:", result)
+      console.log("📬 Resultado del envío:", result)
 
       if (result.success) {
+        // Mostrar mensaje de confirmación
         setShowConfirmation(true)
 
+        // Mostrar toast
         toast({
           title: "Formulario enviado",
-          description: result.message || "Nos pondremos en contacto contigo pronto.",
+          description: "Nos pondremos en contacto contigo pronto.",
         })
 
+        // Limpiar el formulario después de 3 segundos
         setTimeout(() => {
           if (formRef.current) {
             formRef.current.reset()
@@ -92,6 +80,8 @@ export default function ContactoPageClient() {
           }
         }, 3000)
       } else {
+        console.error("❌ Error del servidor:", result)
+
         toast({
           title: "Error",
           description: result.message || "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
@@ -99,14 +89,11 @@ export default function ContactoPageClient() {
         })
       }
     } catch (error) {
-      console.error("[v0] Error al enviar el formulario:", error)
+      console.error("❌ Error al enviar el formulario:", error)
 
       toast({
         title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Ocurrió un error al enviar el formulario. Por favor, inténtalo de nuevo.",
+        description: "Ocurrió un error al enviar el formulario. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       })
     } finally {
